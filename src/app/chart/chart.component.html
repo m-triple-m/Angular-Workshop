@@ -1,0 +1,67 @@
+<div class="container-fluid mt-5">
+    <div class="card">
+        <div class="card-body bg-dark" >
+            <p class="text-center text-light h2">Welcome To Real Time Data Visualization</p>
+            <label class="mt-4 text-light h4">Select Type of Visualization</label>
+            <input class="form-control" [(ngModel)]="type_viz" list="type_viz" (change)="showForms()">
+            <datalist id="type_viz">
+                <option value="bar">Bar</option>
+                <option value="dou">Doughnut</option>
+            </datalist>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card mt-5" *ngIf="barData">
+                <div class="card-header">
+                    <p class="h3">Create Bar Chart</p>
+                </div>
+                <div class="card-body">
+                    
+                        <label>Name</label>
+                        <input class="form-control" #name>
+                        <label>Marks</label>
+                        <input class="form-control" #mark type="number">
+                        <button class="btn btn-danger btn-block mt-3" (click)="addDataPoints(name.value, mark.value)">Add</button>
+                    
+                </div>
+            </div>
+            <div class="card mt-5" *ngIf="pieData">
+                <div class="card-header">
+                    <p class="h3">Create Doughnut Chart</p>
+                </div>
+                <div class="card-body">
+                        
+
+                        <label class="mt-5">Name</label>
+                        <input class="form-control" >
+                    <form [formGroup]="details" (submit)="updateChart(details.value)">
+                        
+    
+                        <label class="mt-5">Python</label>
+                        <input class="form-control" formControlName="Python" type="number">
+    
+                        <label class="mt-5">Java</label>
+                        <input class="form-control" formControlName="Java" type="number">
+    
+                        <label class="mt-5">CPP</label>
+                        <input class="form-control" formControlName="CPP" type="number">
+
+                        <label class="mt-5">C</label>
+                        <input class="form-control" formControlName="C" type="number">
+
+                        <label class="mt-5">JavaScript</label>
+                        <input class="form-control" formControlName="Javascript">
+                        <button class="btn btn-primary btn-block mt-5">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div id="chartContainer">
+
+            </div>
+        </div>
+    </div>
+</div>
+
